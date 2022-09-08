@@ -219,6 +219,12 @@ class ThemePanel_Settings_Page {
             ),
             array(
                 'section' => 'ThemePanel_section',
+                'label' => 'Style Settings',
+                'id' => 'eccom_alert_3',
+                'type' => 'alert',
+            ),
+            array(
+                'section' => 'ThemePanel_section',
                 'label' => 'General Color',
                 'id' => 'eccom_bg_color',
                 'type' => 'color',
@@ -236,6 +242,12 @@ class ThemePanel_Settings_Page {
                 'placeholder' => '#ea4201',
                 'id' => 'eccom_bg_color_two',
                 'type' => 'color',
+            ),
+            array(
+                'section' => 'ThemePanel_section',
+                'label' => 'Links',
+                'id' => 'eccom_alert_4',
+                'type' => 'alert',
             ),
             array(
                 'section' => 'ThemePanel_section',
@@ -280,6 +292,9 @@ class ThemePanel_Settings_Page {
             $placeholder = $field['placeholder'];
         }
         switch ( $field['type'] ) {
+
+            case 'alert':
+                break;
 
 
             case 'textarea':
@@ -350,6 +365,20 @@ class FormSettings_Settings_Page {
 
     public function wph_setup_fields() {
         $fields = array(
+
+            array(
+                'section' => 'FormSettings_section',
+                'label' => 'Contact Form 7 Settings',
+                'id' => 'eccom_alert_1',
+                'type' => 'alert',
+            ),
+
+            array(
+                'section' => 'FormSettings_section',
+                'label' => 'Use contact form?',
+                'id' => 'eccom_contact_form_control',
+                'type' => 'checkbox',
+            ),
             array(
                 'section' => 'FormSettings_section',
                 'label' => 'Contact Form ID',
@@ -357,6 +386,13 @@ class FormSettings_Settings_Page {
                 'type' => 'text',
             ),
 
+
+            array(
+                'section' => 'FormSettings_section',
+                'label' => 'Title Settings',
+                'id' => 'eccom_alert_2',
+                'type' => 'alert',
+            ),
             array(
                 'section' => 'FormSettings_section',
                 'label' => 'Form Title',
@@ -369,7 +405,19 @@ class FormSettings_Settings_Page {
                 'label' => 'Form Description',
                 'id' => 'eccom_form_description',
                 'type' => 'text',
-            )
+            ),
+            array(
+                'section' => 'FormSettings_section',
+                'label' => 'Form Description',
+                'id' => 'eccom_form_description',
+                'type' => 'text',
+            ),
+            array(
+                'section' => 'FormSettings_section',
+                'label' => 'Right Area Custom HTML',
+                'id' => 'eccom_mail_text',
+                'type' => 'textarea',
+            ),
         );
         foreach( $fields as $field ){
             add_settings_field( $field['id'], $field['label'], array( $this, 'wph_field_callback' ), 'FormSettings', $field['section'], $field );
@@ -378,11 +426,32 @@ class FormSettings_Settings_Page {
     }
     public function wph_field_callback( $field ) {
         $value = get_option( $field['id'] );
+        $label = get_option( $field['label'] );
         $placeholder = '';
         if ( isset($field['placeholder']) ) {
             $placeholder = $field['placeholder'];
         }
         switch ( $field['type'] ) {
+
+            case 'checkbox':
+                printf('<input %s id="%s" name="%s" type="checkbox" value="1">',
+                    $value === '1' ? 'checked' : '',
+                    $field['id'],
+                    $field['id']
+                );
+                break;
+
+            case 'textarea':
+                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>',
+                    $field['id'],
+                    $placeholder,
+                    $value
+                );
+                break;
+
+            case 'alert':
+                break;
+
 
 
             default:
@@ -413,3 +482,4 @@ function redirect_to_home( $query ){
     }
 }
 add_action( 'parse_query', 'redirect_to_home' );
+
