@@ -27,3 +27,6 @@ Theme follows [WordPress recommended requirements](https://wordpress.org/about/r
 
 # Licensing
 This theme is licensed under the GPL License
+
+# Author
+Author [Enes Cantürk](https://enescanturk.com/) 
