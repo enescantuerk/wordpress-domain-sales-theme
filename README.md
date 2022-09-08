@@ -1,7 +1,7 @@
 # WordPress Domain Sales Theme
 Free WordPress domain sales theme
 
-## 🚀 Quick start
+### 🚀 Quick start
 
 1. First download the theme's .zip file from the source file to your local computer.
 
@@ -12,6 +12,9 @@ Free WordPress domain sales theme
 4. The theme upload form is now open, click `Choose File`, select the theme zip file on your computer and click `Install Now`.
 
 5. The theme can now be activated from the administrator. Select the `Appearance` tab, then open the theme catalog, find the theme, and click the `Activate link`.
+6. `Admin Panel > Theme Panel` edit settings.
+7. `Admin Panel > Settings > Form Settings` and edit right area settings.
+8. That's all!
 
 ### Requirements
 
